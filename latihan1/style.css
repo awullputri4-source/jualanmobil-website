@@ -1,23 +1,28 @@
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css);
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+/* 1. PERBAIKAN DI BODY: Hapus display flex di sini */
 body{
     min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
     background: linear-gradient(
         to right,
         grey,
         white
     );
+    font-family: sans-serif; /* Opsional: biar font default-nya lebih rapi */
+}
+
+/* 2. CONTAINER: Ini yang bertugas mengatur posisi kartu-kartu */
+.container {
+    display: flex;     /* Kartu akan turun ke bawah kalau layar kekecilan */
+    justify-content: center; /* Membuat kartu berada di tengah-tengah layar secara horizontal */
+    align-items: center;     /* Membuat kartu berada di tengah secara vertikal */
+    gap: 30px;             /* Memberi jarak antar kartu */
+    padding: 40px;
+    min-height: 100vh;     /* Memastikan container memenuhi tinggi layar */
 }
 
 .card{
@@ -41,9 +46,6 @@ h2{
     color:rgb(255, 252, 252);
     font-family: 'Lora';
 }
-h4{
-    line-height: 1.5;
-}
 
 h3{
     text-align: center;
@@ -52,32 +54,35 @@ h3{
     margin-bottom:15px;
 }
 
+h4{
+    line-height: 1.5;
+    color: white; /* Memberi warna teks list agar terbaca di latar gelap */
+    padding-left: 20px; 
+}
+
+/* 3. PERBAIKAN BUTTON: Satukan properti button agar tidak bentrok */
 button{
     display:block;
     margin:20px auto;
-    animation: float 3s infinite ease-in-out;
     background:rgb(158, 158, 158);
     border:none;
     padding:10px 30px;
     border-radius:8px;
     cursor:pointer;
+    animation: melayang 2s infinite ease-in-out; /* Menggunakan animasi melayang */
 }
+
 button:hover{
     background-color: rgb(243, 243, 243);
-}
-button{
-    animation: melayang 2s infinite ease-in-out;
 }
 
 @keyframes melayang{
     0%{
         transform: translateY(0);
     }
-
     50%{
         transform: translateY(-10px);
     }
-
     100%{
         transform: translateY(0);
     }
